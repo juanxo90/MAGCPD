@@ -1,5 +1,5 @@
 # MAGCPD
-MAGCPD
+
 MAGCPD: A MATLAB functions to calculate the Curie Point Depth and their 1D thermal modeling.
 A MATLAB based codes for the estimation of the Curie Point Depth (CPD), associated with the depth to the bottom of magnetic source, by the inversion of magnetic anomalies.
 This code uses an algorithm based on the calculation of the top and the centroid of the magnetic source using the modified centroid approach due to 2D fractal magnezitation model.

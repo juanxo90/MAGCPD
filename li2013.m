@@ -23,7 +23,7 @@
      %
      % Optional modeling: The temperature model needs the parameters of 
      %                       Zb (km) is the Curie Point depth 
-     %                       Ts (°C) the mean annual surface temperature 
+     %                       Ts (Â°C) the mean annual surface temperature 
      %                       Ao (microW/m3) is heat production at the surface
      %                       b (km) is the empirical heat-production depth-distribution parameter
      %                       k (W/mK) is thermal conductivity
@@ -372,7 +372,7 @@ function geotherms(Zb)
 % al,. 2016. 
 % geo(Zb,Ts,Ao,b)
 % Zb (km) is the Curie Point depth 
-% Ts (ï¿½C) the mean annual surface temperature 
+% Ts (Â°C) the mean annual surface temperature 
 % Ao (microW/m3) is heat production at the surface
 % b (km) is the empirical heat-production depth-distribution parameter
 % k (W/mK) is thermal conductivity
@@ -382,8 +382,8 @@ Zb=1000*Zb; %Zb (m)
 c=1;
 while c==1
 Ts=20; b=10; Ao=2.5; Tc = 580;
-fprintf(['\nDefault Values \nSurface temperature (Ts): %.2f °C\n' ...
-    'Curie temperature (Tc): %.2f °C\n' ...
+fprintf(['\nDefault Values \nSurface temperature (Ts): %.2f Â°C\n' ...
+    'Curie temperature (Tc): %.2f Â°C\n' ...
     'Surface heat production (Ao) = %.2f microW/m3\n' ...
     'Sacaling length of surface radiogenic heat production (b) = %.2f km\n'],Ts,Tc,Ao,b);
 P=input('\nDo you want to use these default values? (y/n): ','s');
@@ -397,7 +397,7 @@ end
 Ts=V(1); Tc=V(2); A=V(3)*1e-6; b=V(4)*1e3;
 k=input('Enter thermal conductivity: '); %Thermal conductivity
 qs = k*(Tc-Ts)/Zb + A*b - ((A*b^2)/Zb)*(1-exp(-Zb/b)); %Martos et al., 2017 %heat flow at the surface (W/m2)
-fprintf('K = %.2f W/(m°C) and Qs = %.4f mW/m2\n',k,qs*1e3); %Surface Heat Flow
+fprintf('K = %.2f W/(mÂ°C) and Qs = %.4f mW/m2\n',k,qs*1e3); %Surface Heat Flow
 zb=Zb/1000; dlim=ceil(zb/5)*5;
 z=0:1000*dlim;
 Tcrust=Ts + z*qs/k + A*b*(b-z)/k - A*b^2*exp(-z/b)/k; %Ravat et al., 2016
@@ -411,8 +411,8 @@ axis ij
 hold off
 legend({['K = ' num2str(k,'%#.2g') ' W/(mK)'],...
     [' CPD = ' num2str(zb,'%.2f') ' km'],...
-    [' CT = ' num2str(Tc) ' °C']})
-title('Steady-state one-dimensional geotherm'); xlabel('Temperature (°C)'); ylabel('Depth (km)'); grid on; box on; ylim([0,dlim]); xlim([0,Tlim]);
+    [' CT = ' num2str(Tc) ' Â°C']})
+title('Steady-state one-dimensional geotherm'); xlabel('Temperature (Â°C)'); ylabel('Depth (km)'); grid on; box on; ylim([0,dlim]); xlim([0,Tlim]);
 %% Yes/No rerun
 reply = input('\nWould you want to make a new model? (y/n): ','s');
 if strcmp(reply,'n')

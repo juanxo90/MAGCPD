@@ -186,7 +186,7 @@ str = {'Values',['\alpha = ' num2str(b2)],...
     ['Misfit = ' num2str(fit_fm,'%#.4f')]};
 text(0.05,0.5,str,'FontSize',14); axis off
 %%
-fprintf(['Fractal exponent: %.2f\n' 'Zt = %.4f km\n' 'Z0 = %.4f km\n' 'Zb = %.4f km\n'],b2,Zt,Z0,Zb); %Depths of magnetic body
+fprintf(['Fractal exponent: %.2f\n' 'Zt = %.4f km\n' 'Z0 = %.4f km\n' 'Zb = %.4f km\n'],b2,Zt-Zc,Z0-Zc,Zb-Zc); %Depths of magnetic body
 fprintf(['Zt error = %.4f km\n' 'Z0 error = %.4f km\n' 'Zb error = %.4f km\n' 'Misfit = %.4f\n'],Zt_error,p1_err,Zb_err,fit_fm); %Errors
 %% Yes/No rerun
 reply = input('Would you like to run the program again? (y/n): ','s');

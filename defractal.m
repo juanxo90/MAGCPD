@@ -23,7 +23,7 @@
      %
      % Optional modeling: The temperature model needs the parameters of 
      %                       Zb (km) is the Curie Point depth 
-     %                       Ts (캜) the mean annual surface temperature 
+     %                       Ts (째C) the mean annual surface temperature 
      %                       Ao (microW/m3) is heat production at the surface
      %                       b (km) is the empirical heat-production depth-distribution parameter
      %                       k (W/mK) is thermal conductivity
@@ -106,7 +106,7 @@ p1_err= sd1/((4*pi)*(max(xs)-min(xs)));
 Zb=((2*Z0)-Zt);%depth to the bottom of the magnetic source (DBMS)
 Zb_err=sqrt(((4*p1_err))^2+(Zt_error^2)); %DBMS uncertainity (Martos et al., 2018)
 
-%% Forward model Dario
+%% Forward model
 fm_fit_e3=[]; 
 r=[]; M=max(pw2);
 p=find(pw2==ys2(length(ys2)));
@@ -115,7 +115,7 @@ for k = linspace(exp(M-4),exp(M+4),1000) %Contador
    
     fm3=k.*exp(-(4*pi).*w2.*Zt).*((1-exp(-(2*pi*w2).*(Zb-Zt))).^2); %forward modeling
     fm_fit_e3=[fm_fit_e3,sqrt((sum((pw2(1:find(pw2==ys2(length(ys2))))-...
-        log(fm3(1:find(pw2==ys2(length(ys2)))))).^2))/length(pw2(1:find(pw2==ys2(length(ys2))))));]; %std desv, indica como se deben guardar los valores   
+        log(fm3(1:find(pw2==ys2(length(ys2)))))).^2))/length(pw2(1:find(pw2==ys2(length(ys2))))));]; %std desv
 end 
  X=fm_fit_e3;
  Q=[X;r]';
@@ -222,7 +222,7 @@ function x=fileid(data)
 [~,~,ext] = fileparts(data);
 if (strcmpi(strtrim(ext),'.csv') || strcmpi(strtrim(ext),'.txt') || strcmpi(strtrim(ext),'.dat') || strcmpi(strtrim(ext),'.SPC'))
     x=0;
-elseif (strcmpi(strtrim(ext),'.tif'))
+elseif (strcmpi(strtrim(ext),'.tif') || strcmpi(strtrim(ext),'.tiff') )
     x=1;
 else
     disp('Error: Unexpected file')
@@ -389,7 +389,7 @@ function geotherms(Zb)
 % al,. 2016. 
 % geo(Zb,Ts,Ao,b)
 % Zb (km) is the Curie Point depth 
-% Ts (캜) the mean annual surface temperature 
+% Ts (째C) the mean annual surface temperature 
 % Ao (microW/m3) is heat production at the surface
 % b (km) is the empirical heat-production depth-distribution parameter
 % k (W/mK) is thermal conductivity
@@ -399,8 +399,8 @@ Zb=1000*(Zb-Zc); %Zb (m)
 c=1;
 while c==1
 Ts=20; b=10; Ao=2.5; Tc = 580;
-fprintf(['\nDefault Values \nSurface temperature (Ts): %.2f 캜\n' ...
-    'Curie temperature (Tc): %.2f 캜\n' ...
+fprintf(['\nDefault Values \nSurface temperature (Ts): %.2f 째C\n' ...
+    'Curie temperature (Tc): %.2f 째C\n' ...
     'Surface heat production (Ao) = %.2f microW/m3\n' ...
     'Sacaling length of surface radiogenic heat production (b) = %.2f km\n'],Ts,Tc,Ao,b);
 P=input('\nDo you want to use these default values? (y/n): ','s');
@@ -414,7 +414,7 @@ end
 Ts=V(1); Tc=V(2); A=V(3)*1e-6; b=V(4)*1e3;
 k=input('Enter thermal conductivity: '); %Thermal conductivity
 qs = k*(Tc-Ts)/Zb + A*b - ((A*b^2)/Zb)*(1-exp(-Zb/b)); %Martos et al., 2017 %heat flow at the surface (W/m2)
-fprintf('K = %.2f W/(m캜) and Qs = %.4f mW/m2\n',k,qs*1e3); %Surface Heat Flow
+fprintf('K = %.2f W/(m째C) and Qs = %.4f mW/m2\n',k,qs*1e3); %Surface Heat Flow
 zb=Zb/1000; dlim=ceil(zb/5)*5;
 z=0:1000*dlim;
 Tcrust=Ts + z*qs/k + A*b*(b-z)/k - A*b^2*exp(-z/b)/k; %Ravat et al., 2016
@@ -428,8 +428,8 @@ axis ij
 hold off
 legend({['K = ' num2str(k,'%#.2g') ' W/(mK)'],...
     [' CPD = ' num2str(zb,'%.2f') ' km'],...
-    [' CT = ' num2str(Tc) ' 캜']})
-title('Steady-state one-dimensional geotherm'); xlabel('Temperature (캜)'); ylabel('Depth (km)'); grid on; box on; ylim([0,dlim]); xlim([0,Tlim]);
+    [' CT = ' num2str(Tc) ' 째C']})
+title('Steady-state one-dimensional geotherm'); xlabel('Temperature (째C)'); ylabel('Depth (km)'); grid on; box on; ylim([0,dlim]); xlim([0,Tlim]);
 %% Yes/No rerun
 reply = input('\nWould you want to make a new model? (y/n): ','s');
 if strcmp(reply,'n')

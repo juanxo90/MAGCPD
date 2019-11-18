@@ -13,7 +13,8 @@ a) GEOtiff image with the magnetic data or radially averaged power (or amplitude
 
 b) Flight altitude of the data acquisition in km.
 
-Please watch the video tutorial for more details.
+Please watch the video tutorial for more details:
+https://www.youtube.com/watch?v=Hgs5Yri0EDw
 
 This code is part of the paper: 
 Carrillo-de la Cruz, J. L., Velázquez-Sánchez, S., Gómez-Rodríguez, D., Prol-Ledesma, R. M. MAGCPD: A MATLAB-based code to calculate the Curie point-depth involving the spectral analysis of aeromagnetic data. 

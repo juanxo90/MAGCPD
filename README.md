@@ -24,7 +24,6 @@ The synthetic data are:
 
 3.- Radially Averaged Power Spectrum (RAPS.txt)
 
-
 This code is part of the paper: 
 Carrillo-de la Cruz, J. L., Velázquez-Sánchez, S., Gómez-Rodríguez, D., Prol-Ledesma, R. M. MAGCPD: A MATLAB-based code to calculate the Curie point-depth involving the spectral analysis of aeromagnetic data. 
 

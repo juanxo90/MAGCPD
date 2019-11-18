@@ -16,6 +16,11 @@ b) Flight altitude of the data acquisition in km.
 Please watch the video tutorial for more details:
 https://www.youtube.com/watch?v=Hgs5Yri0EDw
 
+The synthetic data are:
+1.- Magnetic data (synt_200.tif)
+2.- Radially Averaged Amplitude Spectrum (RAAS.txt)
+3.- Radially Averaged Power Spectrum (RAPS.txt)
+
 This code is part of the paper: 
 Carrillo-de la Cruz, J. L., Velázquez-Sánchez, S., Gómez-Rodríguez, D., Prol-Ledesma, R. M. MAGCPD: A MATLAB-based code to calculate the Curie point-depth involving the spectral analysis of aeromagnetic data. 
 

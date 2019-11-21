@@ -78,7 +78,7 @@ f1=figure;
 plot(w2,pw2,'k.-');
 ylabel('ln(A(k))','Interpreter','latex','FontSize',12,'FontName','Times New Roman');
 xlabel('k ($\frac{1}{km}$)','Interpreter','latex','FontSize',12,'FontName','Times New Roman');
-ylim([floor(min(pw2)) ceil(max(pw2))]);
+ylim([floor(min(pw2)) ceil(max(pw2)+1)]);
 [~,xs2,ys2] = selectdata('sel','br','BrushShape','rect','BrushSize',0.01);
 close(f1)
 p2=polyfit(xs2,ys2,1); %slope Zt and intercept

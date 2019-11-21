@@ -27,7 +27,7 @@
      %                       b (km) is the empirical heat-production depth-distribution parameter
      %                       k (W/mK) is thermal conductivity
      %
-function defractal(varargin)
+function magcpddef(varargin)
 switch nargin
     case 1
         data = varargin{1};
@@ -104,21 +104,15 @@ p1_err= sd1/((4*pi)*(max(xs)-min(xs)));
 Zb=((2*Z0)-Zt);%depth to the bottom of the magnetic source (DBMS)
 Zb_err=sqrt(((4*p1_err))^2+(Zt_error^2)); %DBMS uncertainity (Martos et al., 2018)
 %% Forward model
-fm_fit_e3=[]; 
-r=[]; M=max(pw2);
-p=find(pw2==ys2(length(ys2)));
-for k = linspace(exp(M-4),exp(M+4),1000) %Contador
-    r=[r,k];
-   
-    fm3=k.*exp(-(4*pi).*w2.*Zt).*((1-exp(-(2*pi*w2).*(Zb-Zt))).^2); %forward modeling
-    fm_fit_e3=[fm_fit_e3,sqrt((sum((pw2(1:find(pw2==ys2(length(ys2))))-...
-        log(fm3(1:find(pw2==ys2(length(ys2)))))).^2))/length(pw2(1:find(pw2==ys2(length(ys2))))));]; %std desv
+ M=max(pw2); k=linspace(exp(M-4),exp(M+4),1000)'; fm_fit_e3=ones(1000,1);
+for i = 1:length(k) %Contador
+    fm3=k(i).*exp(-(4*pi).*w2.*Zt).*((1-exp(-(2*pi*w2).*(Zb-Zt))).^2); %forward modeling
+    fm_fit_e3(i)=sqrt((sum((pw2(1:find(pw2==ys2(length(ys2))))-...
+        log(fm3(1:find(pw2==ys2(length(ys2)))))).^2))/length(pw2(1:find(pw2==ys2(length(ys2)))))); %std desv
 end 
- X=fm_fit_e3;
- Q=[X;r]';
- w=min(X);
- [~, yf]= find(X==w);
- c=Q(yf,2);% constant to adjust forward modeling
+ Q=[k, fm_fit_e3]; %Constant values and their standard deviations
+ w=min(fm_fit_e3); [yf,~]= find(fm_fit_e3==w);
+ c=Q(yf,1);% constant to adjust forward modeling
 %forward modeling
 fm1=c.*exp(-(4*pi).*w2.*Zt).*((1-exp(-(2*pi*w2).*(Zb-Zt))).^2);
 %error of fitting using the std deviation of residals
@@ -138,13 +132,14 @@ plot(w2,pw2,'b-');
 plot(wh2,kk2,'-r','Linewidth',1,'Markersize',12); xlim([0 max(w2)]); box on
 ylabel('ln(P(k))','Interpreter','latex','FontSize',12,'FontName','Times New Roman');
 xlabel('k ($\frac{1}{km}$)','Interpreter','latex','FontSize',12,'FontName','Times New Roman');
-ylim([floor(min(pw2)) ceil(max(pw2)+1)]);
+ylim([floor(min(pw2)) ceil(max(pw2))]);
 hold(ax1,'off')
 %
 ax2 = subplot(2,2,2);
 hold(ax2,'on')
 plot(w2,ps2,'b-');
-plot(w1,kk,'-r','Linewidth',1,'Markersize',12); xlim([0 max(w2)]); box on
+plot(w1,kk,'-r','Linewidth',1,'Markersize',12); xlim([0 max(w2)]); 
+ylim([floor(min(ps2)) ceil(max(ps2)+1)]); box on
 ylabel('ln($\frac{P(k)}{k^{2}}$)', ...
     'Interpreter','latex','FontSize',12,'FontName','Times New Roman')
 xlabel('k ($\frac{1}{km}$)','Interpreter', ...
@@ -192,7 +187,7 @@ fprintf(['Zt error = %.4f km\n' 'Z0 error = %.4f km\n' 'Zb error = %.4f km\n' 'M
 reply = input('Would you like to run the program again? (y/n): ','s');
 if strcmp(reply,'n')
     clc
-    fprintf(['Fractal exponent: %.2f\n' 'Zt = %.4f km\n' 'Z0 = %.4f km\n' 'Zb = %.4f km\n'],b2,Zt,Z0,Zb); %Depths of magnetic body
+    fprintf(['Fractal exponent: %.2f\n' 'Zt = %.4f km\n' 'Z0 = %.4f km\n' 'Zb = %.4f km\n'],b2,Zt-Zc,Z0-Zc,Zb-Zc); %Depths of magnetic body
     fprintf(['Zt error = %.4f km\n' 'Z0 error = %.4f km\n' 'Zb error = %.4f km\n' 'Misfit = %.4f\n'],Zt_error,p1_err,Zb_err,fit_fm); %Errors
     p=input('\nDo you want to model the temperature profile? (y/n): ','s');
     if strcmp(p,'y')
@@ -958,7 +953,7 @@ while selectionflag
           xselect = [];
           yselect = [];
         else
-          for i = 1:numel(xdata);
+          for i = 1:numel(xdata)
             pointslist{i} = [];
             xselect{i} = [];
             yselect{i} = [];
@@ -995,7 +990,7 @@ if strcmpi(params.Action,'delete')
     set(hc,'xdata',xdata,'ydata',ydata)
   else
     % it was a cell array, so there were multiple sets.
-    for i = 1:numel(xdata);
+    for i = 1:numel(xdata)
       
       xdata{i}(pointslist{i}) = [];
       ydata{i}(pointslist{i}) = [];
@@ -1015,7 +1010,7 @@ if strcmpi(params.Return,'unselected')
     yselect = ydata(pointslist);
   else
     % it was a cell array, so there were multiple sets.
-    for i = 1:numel(xdata);
+    for i = 1:numel(xdata)
       pointslist{i} = setdiff((1:npoints(i))',pointslist{i});
       
       xselect{i} = xdata{i}(pointslist{i});
@@ -1056,7 +1051,7 @@ function brushmotion(src,evnt) %#ok
     nsel = length(pointslist);
   else
     % it was a cell array, so there were multiple sets.
-    for j = 1:numel(pointslist);
+    for j = 1:numel(pointslist)
       pointslist{j} = union(pointslist{j},pl{j});  %#ok
       pointslist{j} = pointslist{j}(:); %#ok
       
@@ -1304,7 +1299,7 @@ else
   xsel = pl;
   ysel = pl;
   nsel = 0;
-  for i = 1:numel(xdata);
+  for i = 1:numel(xdata)
     pl{i} = find(inpolygon(xdata{i},ydata{i},xv,yv));
     nsel = nsel + length(pl{i});
     
@@ -1331,7 +1326,7 @@ else
   % there is more than one set of points
   Dmin = inf;
   pointslist = cell(size(xdata));
-  for i = 1:numel(xdata);
+  for i = 1:numel(xdata)
     D = sqrt(((xdata{i} - xy(1))/dx).^2 + ((ydata{i} - xy(2))/dy).^2);
     [mind,ind] = min(D(:)); %#ok
     

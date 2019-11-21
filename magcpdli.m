@@ -28,7 +28,7 @@
      %                       b (km) is the empirical heat-production depth-distribution parameter
      %                       k (W/mK) is thermal conductivity
      %
-function li2013(varargin)
+function magcpdli(varargin)
 switch nargin
     case 1
         data = varargin{1};
@@ -106,7 +106,9 @@ Zb=2*Z0-Zt; %depth to the bottom of the magnetic source
 Zb_err=sqrt((4*(p1_err))^2+(Zt_error^2)); %DBMS uncertainity (Martos et al., 2018)
 %% Forward model
 g2=a2(1:size(a2),2); %Amplitude spectrum
-sx=w2(1:find(w2==xs2(length(ys2)))); sy=g2(1:find(w2==xs2(length(ys2)))); x0=20;
+sx=w2(1:find(w2==xs2(length(ys2)))); sy=g2(1:find(w2==xs2(length(ys2))));
+[Mx,I]=max(sx); 
+x0=Mx + 2*pi*sx(I)*Zt + 0.5*(b2-1)*log(2*pi*sx(I));
 func = @(x0,x)x0 - ((2*pi*x)*Zt)- log( (2*pi*x).^(0.5*(b2-1)) )...
     + log((1-exp(-2*pi*x*(Zb-Zt)))); %Synthetic amplitud Spectrum from Li et al. (2013)
 [xc,resnorm] = lsqcurvefit(func,x0,sx,sy);

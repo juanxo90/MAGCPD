@@ -319,7 +319,7 @@ end
 % (in radians) for a signal of length n
 %using the fcoef fuction
 w=fcoef1(dimMax);
-w=w(1:floor(dimMax/2));
+w=w(1:floor(dimMax/2)+1);
 w1=w';
 Pf2=Pf';
 CF2=CF'; %confidence interval 

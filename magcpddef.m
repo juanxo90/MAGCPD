@@ -320,11 +320,11 @@ end
 % for a signal of length n
 % using the fcoef fuction
 w=fcoef1(dimMax);
-w=w(1:floor(dimMax/2)+1);
+w=w(1:floor(dimMax/2));
 w1=w';
 Pf2=Pf';
 CF2=CF';
-cv2=[w1(2:size(w1)),Pf2(2:size(Pf2)),CF2(2:size(CF2))];
+cv2=[w1(1:size(w1)),Pf2(2:size(Pf2)),CF2(2:size(CF2))];
 [cv3]=cv2(cv2(:,3) <= 1, :);
 end
 %%

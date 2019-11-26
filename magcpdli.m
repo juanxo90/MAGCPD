@@ -1,5 +1,5 @@
 %%
-%%Method proposed by Li et al. (2013) 
+%%Modified centroid method proposed by Li et al. (2013) 
 %%
 %By 
 %Carrillo-de la Cruz, J. L. : juanluiscc9@comunidad.unam.mx

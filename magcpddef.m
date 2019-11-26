@@ -350,7 +350,7 @@ end
 %Calculation of Zt and Z0
 function[w,pw,ps,ci]=basedepth_scaling_defractal_interactive(x,b1) %fractal correction
 w=x(1:size(x),1);
-ps=x(1:size(x),2)+log((w.^b1)./(w.^2));% for Z0
+ps=x(1:size(x),2)+log((w.^b1)./(w));% for Z0
 pw=x(1:size(x),2)+log(w.^b1);% for Zt
 ci=x(1:size(x),3);
 end 

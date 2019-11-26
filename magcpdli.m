@@ -280,7 +280,7 @@ function [cv3]= raps(img)
 % Tom Ridsdill-Smith  March 2000
 %% Process image size information
 [N, M] = size(img);
-%% Compute power spectrum
+%% Compute spectrum
 imgf = fftshift(fft2(img));
 imgfp = (abs(imgf)).^2;
 %% Adjust PSD size

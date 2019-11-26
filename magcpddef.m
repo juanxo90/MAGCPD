@@ -75,7 +75,7 @@ clc;
 %Ploting figures to select data used in slope computation 
 f1=figure;
 plot(w2,pw2,'k.-');
-ylabel('ln(P(k))','Interpreter','latex','FontSize',12,'FontName','Times New Roman');
+ylabel('ln(A(k))','Interpreter','latex','FontSize',12,'FontName','Times New Roman');
 xlabel('k ($\frac{1}{km}$)','Interpreter','latex','FontSize',12,'FontName','Times New Roman');
 ylim([floor(min(pw2)) ceil(max(pw2)+1)]);
 [~,xs2,ys2] = selectdata('sel','br','BrushShape','rect','BrushSize',0.01);
@@ -83,13 +83,13 @@ close(f1)
 p2=polyfit(xs2,ys2,1); %slope Zt and intercept
 wh2=min(xs2)-0.001:0.001:max(xs2)+0.001; %wavenumber to graphs
 kk2=polyval(p2,wh2); %values for files
-Zt=(-1)*(p2(1)/(4*pi));
+Zt=(-1)*(p2(1)/(2*pi));
 sd2=sqrt(sum((ys2-polyval(p2,xs2)).^2)/(length(xs2))); %standart deviation
-Zt_error= sd2/((4*pi)*(max(xs2)-min(xs2)));
+Zt_error= sd2/((2*pi)*(max(xs2)-min(xs2)));
 %%
 f2=figure;
 plot(w2,ps2,'k.-');
-ylabel('ln($\frac{P(k)}{k^{2}}$)','Interpreter', ...
+ylabel('ln($\frac{P(k)}{k}$)','Interpreter', ...
     'latex','FontSize',12,'FontName','Times New Roman')
 xlabel('k ($\frac{1}{km}$)','Interpreter','latex', ...
     'FontSize',12,'FontName','Times New Roman')
@@ -98,15 +98,15 @@ close(f2)
 pl=polyfit(xs,ys,1); %slope Z0 and intercept
 w1=min(xs)-0.002:0.001:max(xs)+0.002; %wavenumber to graphs
 kk=polyval(pl,w1); %values for files
-Z0=(-1)*(pl(1)/(4*pi));
+Z0=(-1)*(pl(1)/(2*pi));
 sd1=sqrt(sum((ys-polyval(pl,xs)).^2)/(length(xs))); %standart deviation
-p1_err= sd1/((4*pi)*(max(xs)-min(xs)));
+p1_err= sd1/((2*pi)*(max(xs)-min(xs)));
 Zb=((2*Z0)-Zt);%depth to the bottom of the magnetic source (DBMS)
 Zb_err=sqrt(((4*p1_err))^2+(Zt_error^2)); %DBMS uncertainity (Martos et al., 2018)
 %% Forward model
  M=max(pw2); k=linspace(exp(M-4),exp(M+4),1000)'; fm_fit_e3=ones(1000,1);
 for i = 1:length(k) %Contador
-    fm3=k(i).*exp(-(4*pi).*w2.*Zt).*((1-exp(-(2*pi*w2).*(Zb-Zt))).^2); %forward modeling
+    fm3=k(i).*exp(-(2*pi).*w2.*Zt).*((1-exp(-(2*pi*w2).*(Zb-Zt)))); %forward modeling
     fm_fit_e3(i)=sqrt((sum((pw2(1:find(pw2==ys2(length(ys2))))-...
         log(fm3(1:find(pw2==ys2(length(ys2)))))).^2))/length(pw2(1:find(pw2==ys2(length(ys2)))))); %std desv
 end 
@@ -114,7 +114,7 @@ end
  w=min(fm_fit_e3); [yf,~]= find(fm_fit_e3==w);
  c=Q(yf,1);% constant to adjust forward modeling
 %forward modeling
-fm1=c.*exp(-(4*pi).*w2.*Zt).*((1-exp(-(2*pi*w2).*(Zb-Zt))).^2);
+fm1=c.*exp(-(2*pi).*w2.*Zt).*((1-exp(-(2*pi*w2).*(Zb-Zt))));
 %error of fitting using the std deviation of residals
 fm_fit_e=sqrt((sum((pw2(1:find(pw2==ys2(length(ys2))))-log(fm1(1:find(pw2==ys2(length(ys2)))))).^2))/(find(pw2==ys2(length(ys2))))); %std desv
 fit_fm = fm_fit_e;
@@ -130,7 +130,7 @@ if (fileid(data) == 1 || cfint == 1)
 end
 plot(w2,pw2,'b-');
 plot(wh2,kk2,'-r','Linewidth',1,'Markersize',12); xlim([0 max(w2)]); box on
-ylabel('ln(P(k))','Interpreter','latex','FontSize',12,'FontName','Times New Roman');
+ylabel('ln(A(k))','Interpreter','latex','FontSize',12,'FontName','Times New Roman');
 xlabel('k ($\frac{1}{km}$)','Interpreter','latex','FontSize',12,'FontName','Times New Roman');
 ylim([floor(min(pw2)) ceil(max(pw2))]);
 hold(ax1,'off')
@@ -140,7 +140,7 @@ hold(ax2,'on')
 plot(w2,ps2,'b-');
 plot(w1,kk,'-r','Linewidth',1,'Markersize',12); xlim([0 max(w2)]); 
 ylim([floor(min(ps2)) ceil(max(ps2)+1)]); box on
-ylabel('ln($\frac{P(k)}{k^{2}}$)', ...
+ylabel('ln($\frac{A(k)}{k}$)', ...
     'Interpreter','latex','FontSize',12,'FontName','Times New Roman')
 xlabel('k ($\frac{1}{km}$)','Interpreter', ...
     'latex','FontSize',12,'FontName','Times New Roman')
@@ -159,7 +159,7 @@ p1=plot(w2,a2(1:size(a2),2),'g-','Linewidth',1,'Markersize',12);
 p2=plot(w2,pw2,'b-','Linewidth',1,'Markersize',12);
 p3 = plot(w2,log(fm1),'-r','Linewidth',1.5,'Markersize',12);
 xlim(ax3,[0 0.2]); box on
-ylabel('ln(P(k))','Interpreter','latex','FontSize',12, ...
+ylabel('ln(A(k))','Interpreter','latex','FontSize',12, ...
     'FontName','Times New Roman')
 xlabel('k ($\frac{1}{km}$)','Interpreter','latex', ...
     'FontSize',12,'FontName','Times New Roman');
@@ -271,7 +271,7 @@ Z_p = XCoeff * X + YCoeff * Y + CCoeff;
 Z_f = Z - Z_p;
 end
 %%
-%function to calculate radially average power spectrum 
+%function to calculate radially average amplitude spectrum 
 function [cv3]= raps(img)
 % function raps(img)
 %
@@ -282,10 +282,10 @@ function [cv3]= raps(img)
 % Tom Ridsdill-Smith  March 2000
 %% Process image size information
 [N M] = size(img);
-%% Compute power spectrum
+%% Compute spectrum
 imgf = fftshift(fft2(img));
 imgfp = (abs(imgf)).^2;
-%% Adjust PSD size
+%% Adjust spectrum size
 dimDiff = abs(N-M);
 dimMax = max(N,M);
 % Make square
@@ -302,7 +302,7 @@ elseif N < M                                                                % Mo
         imgfp = [NaN(floor(dimDiff/2),M); imgfp; NaN(floor(dimDiff/2)+1,M)];% Pad rows to match dimensions
     end
 end
-%% Compute radially average power spectrum
+%% Compute radially average amplitude spectrum
 [X Y] = meshgrid(-dimMax/2:dimMax/2-1, -dimMax/2:dimMax/2-1);               % Make Cartesian grid
 [theta rho] = cart2pol(X, Y);                                               % Convert to polar coordinate axes
 rho = round(rho);
@@ -312,9 +312,9 @@ for r = 0:floor(dimMax/2)
 end
 Pf = zeros(1, floor(dimMax/2)+1);
 for r = 0:floor(dimMax/2)
-    Pf(1, r + 1) = nanmean( log( imgfp( i{r+1} ) ) );
-    CF(1, r + 1) = 1.96 * ( nanstd( log( imgfp( i{r+1} ) ) ) ...
-        / sqrt( length( imgfp( i{r+1} ) ) ) );
+    Pf(1, r + 1) = nanmean( log( sqrt( imgfp( i{r+1} ) ) ) ); %amplitde spectra
+    CF(1, r + 1) = 1.96 * ( nanstd( log( sqrt( imgfp( i{r+1} ) ) ) ) ...
+        / sqrt( length( sqrt( imgfp( i{r+1} ) ) ) ) ); %confidence interval
 end
 %% calculate the 1D angular frequencies
 % for a signal of length n

@@ -316,7 +316,7 @@ for r = 0:floor(dimMax/2)
                    / sqrt( length( sqrt( imgfp( i{r+1} ) ) ) ) ); %confidence interval
 end
 %% calculate the 1D angular frequencies
-% (in radians) for a signal of length n
+%for a signal of length n
 %using the fcoef fuction
 w=fcoef1(dimMax);
 w=w(1:floor(dimMax/2)+1);

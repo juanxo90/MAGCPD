@@ -102,7 +102,7 @@ Z0=(-1)*(pl(1)/(2*pi));
 sd1=sqrt(sum((ys-polyval(pl,xs)).^2)/(length(xs))); %standart deviation
 p1_err= sd1/((2*pi)*(max(xs)-min(xs)));
 Zb=((2*Z0)-Zt);%depth to the bottom of the magnetic source (DBMS)
-Zb_err=sqrt((4*(p1_err^2))+(Zt_error^2)); %DBMS uncertainity (Martos et al., 2018)
+Zb_err=sqrt((4*(p1_err^2))+(Zt_error^2)); %DBMS uncertainity (Martos et al., 2017)
 %% Forward model
  M=max(pw2); k=linspace(exp(M-4),exp(M+4),1000)'; fm_fit_e3=ones(1000,1);
 for i = 1:length(k) %Contador

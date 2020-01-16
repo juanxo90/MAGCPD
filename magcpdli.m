@@ -103,7 +103,7 @@ Z0=(-1)*(pl(1)/(2*pi));
 sd1=sqrt(sum((ys-polyval(pl,xs)).^2)/(length(xs))); %standart deviation
 p1_err= sd1/((2*pi)*(max(xs)-min(xs)));
 Zb=2*Z0-Zt; %depth to the bottom of the magnetic source
-Zb_err=sqrt((4*(p1_err))^2+(Zt_error^2)); %DBMS uncertainity (Martos et al., 2018)
+Zb_err=sqrt((4*(p1_err^2))+(Zt_error^2));  %DBMS uncertainity (Martos et al., 2017)
 %% Forward model
 g2=a2(1:size(a2),2); %Amplitude spectrum
 sx=w2(1:find(w2==xs2(length(ys2)))); sy=g2(1:find(w2==xs2(length(ys2))));

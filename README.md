@@ -15,7 +15,7 @@ a) GEOtiff image with the magnetic data or radially averaged amplitude spectrum 
 b) Flight altitude of the data acquisition in km.
 
 Please watch the video tutorial for more details:
-https://www.youtube.com/watch?v=Hgs5Yri0EDw
+https://youtu.be/Iadvs0faZhk
 
 Synthetic data are attached and corresponds by:
 

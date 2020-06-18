@@ -23,7 +23,7 @@ Data are attached and corresponds by:
 
 The GUI can be installed as a standalone application using the . exe files. The process download the MATLAB runtime and install the application to used in your computer.
 
-Also, the .mlapp are added to users that have license of MATLAB. This software is tested in MATLAB 2019a.
+Also, the .mlapp are added to users that have license of MATLAB. This software is tested in MATLAB 2019a. ATTENTION: selectdata.m need to be in the same folder of the .mlapp applications for matlab running.
 
 
 This code is part of the paper: 

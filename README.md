@@ -11,10 +11,15 @@ After the calculation of the CPD, an optional temperature at depth profile is ca
 The GUI requires as an input data:
 
 a) GEOtiff image with the magnetic data.
+
 b) Flight altitude of the data acquisition in km.
+
 c) Fractal parameters.
+
 d) Selection interactive of the wavenumber range.
-e) Thermal parameters for the temperature profiles
+
+e) Thermal parameters for the temperature profiles.
+
 
 Data are attached and corresponds by:
 

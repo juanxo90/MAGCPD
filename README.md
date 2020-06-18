@@ -6,13 +6,15 @@ A MATLAB based GUI for the estimation of the Curie Point Depth (CPD), associated
 
 This code uses an algorithm based on the calculation of the top and the centroid of the magnetic source due to 2D fractal magnetization model.
 
-After the calculation of the CPD, an optional temperature at depth profile is calculated assuming a 1D steady state with heat generation. For the temperature profile is necesary introduce the thermal parameters required by the console.
+After the calculation of the CPD, an optional temperature at depth profile is calculated assuming a 1D steady state with heat generation. For the temperature profile thermal parameters are required.
 
-The functions requires as an input data:
+The GUI requires as an input data:
 
-a) GEOtiff image with the magnetic data or radially averaged amplitude spectrum file (Log(A(k)), wavenumber (1/km), condifence intervals (optinal)).
-
+a) GEOtiff image with the magnetic data.
 b) Flight altitude of the data acquisition in km.
+c) Fractal parameters.
+d) Selection interactive of the wavenumber range.
+e) Thermal parameters for the temperature profiles
 
 Data are attached and corresponds by:
 
@@ -21,9 +23,11 @@ Data are attached and corresponds by:
 
 The GUI can be installed as a standalone application using the . exe files. The process download the MATLAB runtime and install the application to used in your computer.
 
-Also, the .mlapp are added to users that have license of MATLAB. This software is tested in MATLAB 2019a
+Also, the .mlapp are added to users that have license of MATLAB. This software is tested in MATLAB 2019a.
+
+
 This code is part of the paper: 
-Carrillo-de la Cruz, J. L., Velázquez-Sánchez, S., Gómez-Rodríguez, D., Prol-Ledesma, R. M. MAGCPD: A MATLAB-based GUI to calculate the Curie point-depth involving the spectral analysis of aeromagnetic data. Submit at Earth Science Informatics 
+Carrillo-de la Cruz, J. L., Velázquez-Sánchez, S., Gómez-Rodríguez, D., Prol-Ledesma, R. M. MAGCPD: A MATLAB-based GUI to calculate the Curie point-depth involving the spectral analysis of aeromagnetic data. Submit at Earth Science Informatics. 
 
 References:
 

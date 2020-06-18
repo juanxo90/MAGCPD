@@ -23,8 +23,9 @@ e) Thermal parameters for the temperature profiles.
 
 Data are attached and corresponds by:
 
-1.- Synthetic Magnetic data (synt_200.tif)
-2.- Example window (V9.tif)
+1.- Synthetic Magnetic data (synt_200.tif).
+
+2.- Example window (V9.tif).
 
 The GUI can be installed as a standalone application using the . exe files. The process download the MATLAB runtime and install the application to used in your computer.
 

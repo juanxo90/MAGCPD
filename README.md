@@ -1,8 +1,8 @@
 # MAGCPD
 
-MAGCPD: MATLAB code to calculate the Curie Point Depth and their 1D thermal modeling.
+MAGCPD: MATLAB GUI to calculate the Curie Point Depth and their 1D thermal modeling.
 
-A MATLAB based code for the estimation of the Curie Point Depth (CPD), associated with the depth to the bottom of magnetic source, by the inversion of magnetic anomalies using the modified centroid (Li et al. 2013) and defractal (Salem et al. 2014).
+A MATLAB based GUI for the estimation of the Curie Point Depth (CPD), associated with the depth to the bottom of magnetic source, by the inversion of magnetic anomalies using the modified centroid (Li et al. 2013) and defractal (Salem et al. 2014).
 
 This code uses an algorithm based on the calculation of the top and the centroid of the magnetic source due to 2D fractal magnetization model.
 
@@ -14,17 +14,16 @@ a) GEOtiff image with the magnetic data or radially averaged amplitude spectrum 
 
 b) Flight altitude of the data acquisition in km.
 
-Please watch the video tutorial for more details:
-https://youtu.be/Iadvs0faZhk
+Data are attached and corresponds by:
 
-Synthetic data are attached and corresponds by:
+1.- Synthetic Magnetic data (synt_200.tif)
+2.- Example window (V9.tif)
 
-1.- Magnetic data (synt_200.tif)
+The GUI can be installed as a standalone application using the . exe files. The process download the MATLAB runtime and install the application to used in your computer.
 
-2.- Radially Averaged Amplitude Spectrum (RAAS.txt)
-
+Also, the .mlapp are added to users that have license of MATLAB. This software is tested in MATLAB 2019a
 This code is part of the paper: 
-Carrillo-de la Cruz, J. L., Velázquez-Sánchez, S., Gómez-Rodríguez, D., Prol-Ledesma, R. M. MAGCPD: A MATLAB-based code to calculate the Curie point-depth involving the spectral analysis of aeromagnetic data. 
+Carrillo-de la Cruz, J. L., Velázquez-Sánchez, S., Gómez-Rodríguez, D., Prol-Ledesma, R. M. MAGCPD: A MATLAB-based GUI to calculate the Curie point-depth involving the spectral analysis of aeromagnetic data. Submit at Earth Science Informatics 
 
 References:
 

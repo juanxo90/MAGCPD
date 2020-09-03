@@ -10,7 +10,7 @@ After the calculation of the CPD, an optional temperature at depth profile is ca
 
 The GUI requires as an input data:
 
-a) GEOtiff image with the magnetic data.
+a) GEOtiff image with the magnetic data. Also, old Geosoft 2-byte (signed integer) binary grid are other format to the program. It is important to notice that the square window need to be exported from Oasis Montaj as “Geosoft short” grid type.
 
 b) Flight altitude of the data acquisition in km.
 
@@ -26,6 +26,8 @@ Data are attached and corresponds by:
 1.- Synthetic Magnetic data (synt_200.tif).
 
 2.- Example window (V9.tif).
+
+3.- Example for .grd files (example.grd). There is two images (df_example.png and mc_example.png) showing the wavenumber range and fractal parameter used for this example
 
 The GUI can be installed as a standalone application using the . exe files. The process download the MATLAB runtime and install the application to used in your computer.
 

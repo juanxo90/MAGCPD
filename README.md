@@ -16,7 +16,7 @@ b) Flight altitude of the data acquisition in km.
 
 c) Fractal parameters.
 
-d) Selection interactive of the wavenumber range.
+d) Interactive selection of the wavenumber range.
 
 e) Thermal parameters for the temperature profiles.
 

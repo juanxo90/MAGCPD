@@ -2,7 +2,7 @@
 
 MAGCPD: MATLAB GUI to calculate the Curie Point Depth and their 1D thermal modeling.
 
-A MATLAB based GUI for the estimation of the Curie Point Depth (CPD), associated with the depth to the bottom of magnetic source, by the inversion of magnetic anomalies using the modified centroid (Li et al. 2013) and defractal (Salem et al. 2014).
+A MATLAB based GUI for the estimation of the Curie Point Depth (CPD), associated with the depth to the bottom of magnetic source, by the inversion of magnetic anomalies using the modified centroid (Li et al. 2013) or the defractal (Salem et al. 2014) methods.
 
 This code uses an algorithm based on the calculation of the top and the centroid of the magnetic source due to 2D fractal magnetization model.
 

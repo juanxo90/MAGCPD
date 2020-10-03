@@ -44,3 +44,5 @@ Li, C.-F, Wang, J., Lin, J., Wang, T., 2013. Thermal evolution of the North Atla
 Salem, A., Green, C., Ravat, D., Singh, K. H., East, P., Fairhead, J. D., Mogren, S., Biegert, E., 2014. Depth to Curie temperature across the central Red Sea from magnetic data using the defractal method. Tectonophysics 624–625, 75–86. https://doi.org/10.1016/j.tecto.2014.04.027.
 
 ## Important note: after the instalation of the .exe file, the first time to run the program it may take some minutes, please be patient! 
+
+<img src="https://render.githubusercontent.com/render/math?math=e^{i \pi} = -1">

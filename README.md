@@ -46,7 +46,10 @@ Salem, A., Green, C., Ravat, D., Singh, K. H., East, P., Fairhead, J. D., Mogren
 ## Important note: after the instalation of the .exe file, the first time to run the program it may take some minutes, please be patient! 
 
 ## Important change for the new commit:
-#### Recently, a researcher contact us to show us an error in the equation 8 of the paper, this due to an use of an old version of the paper "Martos YM, Catalán M, Galindo‐Zaldivar J (2019) Curie Depth, heat ﬂux, and thermal subsidence reveal the Paciﬁc mantle outﬂow through the Scotia Sea. J Geophys Res: Solid Earth 124: 10,735–10,751. https://doi.org/10.1029/2019JB017677". The equation is:
-<img src="https://render.githubusercontent.com/render/math?math=\sqrt{ 2 \cdot \Delta Z_{0}^2 + \Delta Z_{t}^2 }">.
-#### the correct equation is 
-<img src="https://render.githubusercontent.com/render/math?math=\sqrt{ (2 \delta Z_{0}) ^2 + \delta Z_{t}^2 }">.
+Recently, a researcher contact us to show us an error in the equation 8 of the paper, this due to an use of an old version of the paper "Martos YM, Catalán M, Galindo‐Zaldivar J (2019) Curie Depth, heat ﬂux, and thermal subsidence reveal the Paciﬁc mantle outﬂow through the Scotia Sea. J Geophys Res: Solid Earth 124: 10,735–10,751. https://doi.org/10.1029/2019JB017677". The equation is:
+
+<img src="https://render.githubusercontent.com/render/math?math=\sqrt{ 2 \cdot \Delta Z_{0}^2 +++ \Delta Z_{t}^2 }">.
+
+The correct equation is 
+
+<img src="https://render.githubusercontent.com/render/math?math=\sqrt{ (2 \Delta Z_{0}) ^2 +++ \Delta Z_{t}^2 }">.

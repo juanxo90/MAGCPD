@@ -53,3 +53,5 @@ Recently, a researcher contact us to show us an error in the equation 8 of the p
 And the correct equation:
 
 <img src="https://render.githubusercontent.com/render/math?math=\sqrt{ (2 \Delta Z_{0}) ^2 %2B \Delta Z_{t}^2 }">.
+
+Our program is updated with the correct equation

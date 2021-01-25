@@ -55,3 +55,5 @@ And the correct equation:
 <img src="https://render.githubusercontent.com/render/math?math=\Delta Z_{b} = \sqrt{ (2 \Delta Z_{0}) ^2 %2B \Delta Z_{t}^2 }">.
 
 Our program is updated with the correct equation
+
+# New update is coming for the 27/01/2021 ....

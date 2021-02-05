@@ -56,4 +56,6 @@ And the correct equation:
 
 Our program is updated with the correct equation
 
-# New update is coming for the 27/01/2021 ....
+# Version 2.0 is ready
+
+This new version has new improvements in the calculation of the radially averaged amplitude spectrum.  Also, the magnetic data grid resolution needs to be specified in km.
